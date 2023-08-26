@@ -1,15 +1,13 @@
 const main = () => {
-  const tweetbox = document.querySelector('#tweet-box');
+  const tweetBox = document.querySelector('#tweet-box');
   const tweetButton = document.querySelector('#tweet-button');
   const tweetsContainer = document.querySelector('#tweets-container');
 
-  const view = new XView(tweetsContainer);
+  const view = new View(tweetBox, tweetButton, tweetsContainer);
 
-  tweetButton.onclick = () => {
-    const message = tweetbox.value;
-    tweetbox.value = '';
-    view.render([{ message }]);
-  };
+  const tweetManager = new TweetManager();
+  const controller = new Controller(view, tweetManager);
+  controller.start();
 };
 
 window.onload = main;
