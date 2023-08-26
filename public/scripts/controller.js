@@ -24,5 +24,7 @@ class Controller {
       this.#addTweet(message);
       this.#display();
     });
+
+    this.#display();
   }
 }

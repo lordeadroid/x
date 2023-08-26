@@ -11,3 +11,5 @@
   - make request to add a tweet
   - from that data change update the model in the frontend
   - the display to the client
+
+- When refreshing the page, tweets should not disappear
