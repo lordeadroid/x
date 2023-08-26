@@ -1,7 +1,6 @@
 {
   "all": true,
   "coverage": true,
-  "check-coverage": true,
   "reporter": ["html", "text"],
   "exclude": [
     "test/",
