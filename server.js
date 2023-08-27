@@ -1,11 +1,11 @@
 /* eslint-disable no-console */
 
 const { createApp } = require('./src/app');
-const { TweetManager } = require('./src/models/tweet-manager');
+const { Tweets } = require('./src/models/tweets');
 
 const main = () => {
-  const tweetManager = new TweetManager();
-  const app = createApp(tweetManager);
+  const tweets = new Tweets();
+  const app = createApp(tweets);
 
   const PORT = 8000;
   app.listen(PORT, () => {

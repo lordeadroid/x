@@ -1,16 +1,16 @@
 const { Tweet } = require('../models/tweet');
 
 const sendTweets = (req, res) => {
-  const { tweetManager } = req.app;
-  const tweetDetails = tweetManager.getTweetDetails();
+  const { tweets } = req.app;
+  const tweetDetails = tweets.getTweetDetails();
   res.json(tweetDetails);
 };
 
 const addTweet = (req, res) => {
-  const { tweetManager } = req.app;
+  const { tweets } = req.app;
   const { message } = req.body;
   const tweet = new Tweet(message);
-  tweetManager.addTweet(tweet);
+  tweets.addTweet(tweet);
   res.end();
 };
 

@@ -11,7 +11,6 @@ module.exports = {
     'space-infix-ops': ['error'],
     'constructor-super': ['error'],
     'func-call-spacing': ['error'],
-    'class-methods-use-this': ['warn'],
     'no-console': 'error',
     'array-callback-return': ['error', { checkForEach: true }],
     'no-cond-assign': 'error',

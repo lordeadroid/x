@@ -1,9 +1,9 @@
 const createTweet = ({ message }) => new Tweet(message);
 
-const createTweetManager = (tweetDetails, tweetManager) => {
+const createTweets = (tweetDetails, tweets) => {
   tweetDetails.forEach((tweetDetail) => {
     const tweet = createTweet(tweetDetail);
-    tweetManager.addTweet(tweet);
+    tweets.addTweet(tweet);
   });
 };
 
@@ -13,16 +13,16 @@ const main = () => {
   const tweetsContainer = document.querySelector('#tweets-container');
 
   const view = new View(tweetBox, tweetButton, tweetsContainer);
-  const tweetManager = new TweetManager();
-  const tweetDataHandler = new TweetDataHandler(tweetManager);
+  const tweets = new Tweets();
+  const tweetDataHandler = new TweetDataHandler(tweets);
   const controller = new Controller(view, tweetDataHandler);
 
-  const createTweetModel = (tweetDetails) => {
-    createTweetManager(tweetDetails, tweetManager);
+  const handleTweets = (tweetDetails) => {
+    createTweets(tweetDetails, tweets);
     controller.start();
   };
 
-  tweetDataHandler.getTweetData(createTweetModel);
+  tweetDataHandler.getTweetData(handleTweets);
 };
 
 window.onload = main;

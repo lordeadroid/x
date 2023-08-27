@@ -2,10 +2,10 @@ const express = require('express');
 const { logRequest } = require('./middlewares/logger');
 const { sendTweets, addTweet } = require('./handlers/tweet-handlers');
 
-const createApp = (tweetManager) => {
+const createApp = (tweets) => {
   const app = express();
 
-  app.tweetManager = tweetManager;
+  app.tweets = tweets;
 
   app.use(logRequest);
   app.use(express.json());

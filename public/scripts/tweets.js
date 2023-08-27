@@ -1,4 +1,6 @@
-class TweetManager {
+/* eslint-disable no-unused-vars */
+
+class Tweets {
   #tweets;
 
   constructor() {
@@ -13,5 +15,3 @@ class TweetManager {
     return this.#tweets.map((tweet) => tweet.getDetails());
   }
 }
-
-module.exports = { TweetManager };
