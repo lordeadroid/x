@@ -33,4 +33,14 @@ describe('APP', () => {
         .end(done);
     });
   });
+
+  describe('POST /tweets', () => {
+    it('should create a new tweet', (_, done) => {
+      const tweetManager = new TweetManager();
+      const app = createApp(tweetManager);
+      const message = 'hello, world';
+
+      request(app).post('/tweets').send({ message }).expect(200).end(done);
+    });
+  });
 });

@@ -1,6 +1,6 @@
 const express = require('express');
 const { logRequest } = require('./middlewares/logger');
-const { sendTweets } = require('./handlers/tweet-handlers');
+const { sendTweets, addTweet } = require('./handlers/tweet-handlers');
 
 const createApp = (tweetManager) => {
   const app = express();
@@ -11,6 +11,7 @@ const createApp = (tweetManager) => {
   app.use(express.json());
 
   app.get('/tweets', sendTweets);
+  app.post('/tweets', addTweet);
 
   app.use(express.static('public'));
 

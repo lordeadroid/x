@@ -2,27 +2,21 @@
 
 class Controller {
   #view;
-  #tweetManager;
+  #tweetDataHandler;
 
-  constructor(view, tweetManager) {
+  constructor(view, tweetDataHandler) {
     this.#view = view;
-    this.#tweetManager = tweetManager;
+    this.#tweetDataHandler = tweetDataHandler;
   }
 
   #display() {
-    const tweetDetails = this.#tweetManager.getTweetDetails();
+    const tweetDetails = this.#tweetDataHandler.getTweetDetails();
     this.#view.render(tweetDetails);
-  }
-
-  #addTweet(message) {
-    const tweet = new Tweet(message);
-    this.#tweetManager.addTweet(tweet);
   }
 
   start() {
     this.#view.setupAddTweet((message) => {
-      this.#addTweet(message);
-      this.#display();
+      this.#tweetDataHandler.addTweet(message, () => this.#display());
     });
 
     this.#display();
