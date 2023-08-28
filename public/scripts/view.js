@@ -29,19 +29,28 @@ class View {
     return likeButton;
   }
 
-  #createTweetContainer(text, id) {
+  #createTotalLikesElement(likes) {
+    const totalLikesElement = document.createElement('div');
+    totalLikesElement.innerText = likes;
+
+    return totalLikesElement;
+  }
+
+  #createTweetContainer(text, id, likes) {
     const tweetElement = this.#createTweetElement(text);
     const likeButton = this.#createLikeButton(id);
     const tweetContainer = document.createElement('div');
+    const totalLikesElement = this.#createTotalLikesElement(likes);
     tweetContainer.classList.add('tweet');
     tweetContainer.appendChild(tweetElement);
     tweetContainer.appendChild(likeButton);
+    tweetContainer.appendChild(totalLikesElement);
 
     return tweetContainer;
   }
 
-  #renderTweet({ text, id }) {
-    const tweetElement = this.#createTweetContainer(text, id);
+  #renderTweet({ text, id, likes }) {
+    const tweetElement = this.#createTweetContainer(text, id, likes);
     this.#tweetsContainer.appendChild(tweetElement);
   }
 

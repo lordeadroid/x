@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
 
 const createTweet = ({ text, id, likes }) => {
-  console.log(id);
   const tweet = new Tweet(text, id);
   tweet.updateLikes(likes);
 

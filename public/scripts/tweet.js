@@ -18,7 +18,8 @@ class Tweet {
   getDetails() {
     const text = this.#text;
     const id = this.#id;
-    return { text, id };
+    const likes = this.#likes;
+    return { text, id, likes };
   }
 
   likeTweet() {
