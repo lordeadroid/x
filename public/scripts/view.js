@@ -4,6 +4,7 @@ class View {
   #tweetBox;
   #tweetButton;
   #tweetsContainer;
+  #likeTweet;
 
   constructor(tweetBox, tweetButton, tweetsContainer) {
     this.#tweetBox = tweetBox;
@@ -21,6 +22,7 @@ class View {
   #createLikeButton() {
     const likeButton = document.createElement('div');
     likeButton.classList.add('like-button');
+    likeButton.onclick = this.#likeTweet;
 
     return likeButton;
   }
@@ -57,5 +59,9 @@ class View {
         addTweet(message);
       }
     };
+  }
+
+  setupOnLike(likeTweet) {
+    this.#likeTweet = likeTweet;
   }
 }

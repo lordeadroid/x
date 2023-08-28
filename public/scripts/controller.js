@@ -19,6 +19,10 @@ class Controller {
       this.#tweetDataHandler.addTweet(message, () => this.#display());
     });
 
+    this.#view.setupOnLike(() => {
+      this.#tweetDataHandler.likeTweet(() => this.#display());
+    });
+
     this.#display();
   }
 }

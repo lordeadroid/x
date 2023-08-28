@@ -43,4 +43,20 @@ describe('APP', () => {
       request(app).post('/tweets').send({ message }).expect(200).end(done);
     });
   });
+
+  describe('POST /tweets/like', () => {
+    it('should increase the like count', (_, done) => {
+      const tweets = new Tweets();
+      const tweet = new Tweet('hello, world', 0, 0);
+      tweets.addTweet(tweet);
+      const app = createApp(tweets);
+
+      request(app)
+        .patch('/tweets/0')
+        .expect(200)
+        .expect('content-type', /json/)
+        .expect({ likes: 1 })
+        .end(done);
+    });
+  });
 });

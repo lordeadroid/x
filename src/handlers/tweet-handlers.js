@@ -14,4 +14,12 @@ const addTweet = (req, res) => {
   res.end();
 };
 
-module.exports = { sendTweets, addTweet };
+const likeTweet = (req, res) => {
+  const { tweets } = req.app;
+  const id = +req.params.id;
+  const likes = tweets.likeTweet(id);
+
+  res.json({ likes });
+};
+
+module.exports = { sendTweets, addTweet, likeTweet };

@@ -27,6 +27,18 @@ class TweetDataHandler {
     });
   }
 
+  likeTweet(renderTweets, id = 0) {
+    fetch(`/tweets/${id}`, {
+      method: 'PATCH',
+      body: JSON.stringify({ id }),
+      headers: {
+        'content-type': 'application/json',
+      },
+    }).then(() => {
+      renderTweets();
+    });
+  }
+
   getTweetDetails() {
     return this.#Tweets.getTweetDetails();
   }
