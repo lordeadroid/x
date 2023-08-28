@@ -9,11 +9,12 @@ const sendTweets = (req, res) => {
 const addTweet = (req, res) => {
   const { tweets } = req.app;
   const { text } = req.body;
+  const { username } = req.cookies;
   const id = tweets.getNoOfTweets();
-  const tweet = new Tweet(text, id);
+  const tweet = new Tweet(text, id, username);
   tweets.addTweet(tweet);
 
-  res.status(201).json({ id });
+  res.status(201).json({ id, username });
 };
 
 const likeTweet = (req, res) => {

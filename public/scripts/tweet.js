@@ -4,11 +4,13 @@ class Tweet {
   #text;
   #id;
   #likes;
+  #username;
 
-  constructor(text, id) {
+  constructor(text, id, username) {
     this.#text = text;
     this.#id = id;
     this.#likes = 0;
+    this.#username = username;
   }
 
   id() {
@@ -19,7 +21,8 @@ class Tweet {
     const text = this.#text;
     const id = this.#id;
     const likes = this.#likes;
-    return { text, id, likes };
+    const username = this.#username;
+    return { text, id, likes, username };
   }
 
   likeTweet() {

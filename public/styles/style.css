@@ -1,13 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  font-size: 50px;
+  width: 40%;
+  margin: 0 auto;
+  font-size: 25px;
 }
 
 .tweet {
+  border: 1px solid gray;
+  height: 180px;
+  width: 750px;
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
+  flex-direction: column;
+  padding: 10px;
+  justify-content: space-between;
 }
 
 .like-button {
@@ -16,4 +26,10 @@ body {
   background-repeat: no-repeat;
   height: 25px;
   width: 25px;
+}
+
+.like-box {
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }

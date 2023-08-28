@@ -22,8 +22,8 @@ class TweetDataHandler {
       },
     })
       .then((res) => res.json())
-      .then(({ id }) => {
-        const tweet = new Tweet(text, id);
+      .then(({ id, username }) => {
+        const tweet = new Tweet(text, id, username);
         this.#tweets.addTweet(tweet);
         renderTweets();
       });

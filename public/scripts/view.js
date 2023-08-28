@@ -12,13 +12,6 @@ class View {
     this.#tweetsContainer = tweetsContainer;
   }
 
-  #createTweetElement(text) {
-    const tweetElement = document.createElement('article');
-    tweetElement.innerText = text;
-
-    return tweetElement;
-  }
-
   #createLikeButton(id) {
     const likeButton = document.createElement('div');
     likeButton.classList.add('like-button');
@@ -29,28 +22,36 @@ class View {
     return likeButton;
   }
 
-  #createTotalLikesElement(likes) {
-    const totalLikesElement = document.createElement('div');
-    totalLikesElement.innerText = likes;
+  #createHTMLElement(type, content) {
+    const element = document.createElement(type);
+    element.innerText = content;
 
-    return totalLikesElement;
+    return element;
   }
 
-  #createTweetContainer(text, id, likes) {
-    const tweetElement = this.#createTweetElement(text);
+  #createTweetContainer({ text, id, likes, username }) {
+    const tweetElement = this.#createHTMLElement('arcticle', text);
+    const totalLikesElement = this.#createHTMLElement('span', likes);
     const likeButton = this.#createLikeButton(id);
+    const header = `@${username} on ${new Date().toDateString()}`;
+    const headerElement = this.#createHTMLElement('span', header);
+
+    const footer = document.createElement('div');
+    footer.classList.add('like-box');
+    footer.appendChild(likeButton);
+    footer.appendChild(totalLikesElement);
+
     const tweetContainer = document.createElement('div');
-    const totalLikesElement = this.#createTotalLikesElement(likes);
     tweetContainer.classList.add('tweet');
+    tweetContainer.appendChild(headerElement);
     tweetContainer.appendChild(tweetElement);
-    tweetContainer.appendChild(likeButton);
-    tweetContainer.appendChild(totalLikesElement);
+    tweetContainer.appendChild(footer);
 
     return tweetContainer;
   }
 
-  #renderTweet({ text, id, likes }) {
-    const tweetElement = this.#createTweetContainer(text, id, likes);
+  #renderTweet(tweetDetail) {
+    const tweetElement = this.#createTweetContainer(tweetDetail);
     this.#tweetsContainer.appendChild(tweetElement);
   }
 
