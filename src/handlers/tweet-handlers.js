@@ -24,8 +24,10 @@ const likeTweet = (req, res) => {
 };
 
 const loggedInUser = (req, res) => {
-  const path = `${process.env.PWD}/public/pages/login.html`;
-  res.sendFile(path);
+  const path = 'login.html';
+  const root = 'public/pages';
+
+  res.sendFile(path, { root });
 };
 
 module.exports = { sendTweets, addTweet, likeTweet, loggedInUser };
