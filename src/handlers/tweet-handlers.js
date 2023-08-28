@@ -23,4 +23,9 @@ const likeTweet = (req, res) => {
   res.status(201).json({ likes });
 };
 
-module.exports = { sendTweets, addTweet, likeTweet };
+const loggedInUser = (req, res) => {
+  const path = `${process.env.PWD}/public/pages/login.html`;
+  res.sendFile(path);
+};
+
+module.exports = { sendTweets, addTweet, likeTweet, loggedInUser };

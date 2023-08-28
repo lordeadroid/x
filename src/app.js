@@ -4,6 +4,7 @@ const {
   sendTweets,
   addTweet,
   likeTweet,
+  loggedInUser,
 } = require('./handlers/tweet-handlers');
 
 const createApp = (tweets) => {
@@ -17,6 +18,7 @@ const createApp = (tweets) => {
   app.get('/tweets', sendTweets);
   app.post('/tweets', addTweet);
   app.patch('/tweets/:id', likeTweet);
+  app.get('/login', loggedInUser);
 
   app.use(express.static('public'));
 
