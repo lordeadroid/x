@@ -29,7 +29,7 @@ describe('APP', () => {
         .get('/tweets')
         .expect(200)
         .expect('content-type', /json/)
-        .expect([{ text }])
+        .expect([{ text, likes: 0 }])
         .end(done);
     });
   });
