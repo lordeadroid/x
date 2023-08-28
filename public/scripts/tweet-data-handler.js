@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
 
 class TweetDataHandler {
-  #Tweets;
+  #tweets;
 
-  constructor(Tweets) {
-    this.#Tweets = Tweets;
+  constructor(tweets) {
+    this.#tweets = tweets;
   }
 
   getTweetData(createTweetModels) {
@@ -13,33 +13,37 @@ class TweetDataHandler {
       .then((tweetDetails) => createTweetModels(tweetDetails));
   }
 
-  addTweet(message, renderTweets) {
+  addTweet(text, renderTweets) {
     fetch('/tweets', {
       method: 'POST',
-      body: JSON.stringify({ message }),
+      body: JSON.stringify({ text }),
       headers: {
         'content-type': 'application/json',
       },
-    }).then(() => {
-      const tweet = new Tweet(message);
-      this.#Tweets.addTweet(tweet);
-      renderTweets();
-    });
+    })
+      .then((res) => res.json())
+      .then(({ id }) => {
+        const tweet = new Tweet(text, id);
+        this.#tweets.addTweet(tweet);
+        renderTweets();
+      });
   }
 
-  likeTweet(renderTweets, id = 0) {
+  likeTweet(id, renderTweets) {
     fetch(`/tweets/${id}`, {
       method: 'PATCH',
-      body: JSON.stringify({ id }),
       headers: {
         'content-type': 'application/json',
       },
-    }).then(() => {
-      renderTweets();
-    });
+    })
+      .then((res) => res.json())
+      .then(({ likes }) => {
+        this.#tweets.updateLikes(id, likes);
+        renderTweets();
+      });
   }
 
   getTweetDetails() {
-    return this.#Tweets.getTweetDetails();
+    return this.#tweets.getTweetDetails();
   }
 }

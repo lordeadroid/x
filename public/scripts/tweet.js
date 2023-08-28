@@ -1,12 +1,12 @@
 /* eslint-disable no-unused-vars */
 
 class Tweet {
-  #message;
+  #text;
   #id;
   #likes;
 
-  constructor(message, id) {
-    this.#message = message;
+  constructor(text, id) {
+    this.#text = text;
     this.#id = id;
     this.#likes = 0;
   }
@@ -16,12 +16,17 @@ class Tweet {
   }
 
   getDetails() {
-    const message = this.#message;
-    return { message };
+    const text = this.#text;
+    const id = this.#id;
+    return { text, id };
   }
 
   likeTweet() {
     this.#likes += 1;
     return this.#likes;
+  }
+
+  updateLikes(likes) {
+    this.#likes = likes;
   }
 }

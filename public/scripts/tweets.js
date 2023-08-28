@@ -15,8 +15,17 @@ class Tweets {
     return this.#tweets.map((tweet) => tweet.getDetails());
   }
 
+  #findTweet(id) {
+    return this.#tweets.find((tweet) => tweet.id() === id);
+  }
+
   likeTweet(id) {
-    const tweet = this.#tweets.find((tweet) => tweet.id() === id);
+    const tweet = this.#findTweet(id);
     return tweet.likeTweet();
+  }
+
+  updateLikes(id, likes) {
+    const tweet = this.#findTweet(id);
+    tweet.updateLikes(likes);
   }
 }

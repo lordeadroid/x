@@ -15,12 +15,12 @@ class Controller {
   }
 
   start() {
-    this.#view.setupAddTweet((message) => {
-      this.#tweetDataHandler.addTweet(message, () => this.#display());
+    this.#view.setupAddTweet((text) => {
+      this.#tweetDataHandler.addTweet(text, () => this.#display());
     });
 
-    this.#view.setupOnLike(() => {
-      this.#tweetDataHandler.likeTweet(() => this.#display());
+    this.#view.setupOnLike((id) => {
+      this.#tweetDataHandler.likeTweet(id, () => this.#display());
     });
 
     this.#display();

@@ -1,4 +1,12 @@
-const createTweet = ({ message }) => new Tweet(message);
+/* eslint-disable no-console */
+
+const createTweet = ({ text, id, likes }) => {
+  console.log(id);
+  const tweet = new Tweet(text, id);
+  tweet.updateLikes(likes);
+
+  return tweet;
+};
 
 const createTweets = (tweetDetails, tweets) => {
   tweetDetails.forEach((tweetDetail) => {

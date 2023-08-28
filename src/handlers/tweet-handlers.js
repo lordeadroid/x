@@ -8,18 +8,19 @@ const sendTweets = (req, res) => {
 
 const addTweet = (req, res) => {
   const { tweets } = req.app;
-  const { message } = req.body;
-  const tweet = new Tweet(message);
+  const { text } = req.body;
+  const id = tweets.getNoOfTweets();
+  const tweet = new Tweet(text, id);
   tweets.addTweet(tweet);
-  res.end();
+
+  res.status(201).json({ id });
 };
 
 const likeTweet = (req, res) => {
   const { tweets } = req.app;
   const id = +req.params.id;
   const likes = tweets.likeTweet(id);
-
-  res.json({ likes });
+  res.status(201).json({ likes });
 };
 
 module.exports = { sendTweets, addTweet, likeTweet };

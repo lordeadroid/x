@@ -12,24 +12,26 @@ class View {
     this.#tweetsContainer = tweetsContainer;
   }
 
-  #createTweetElement(message) {
+  #createTweetElement(text) {
     const tweetElement = document.createElement('article');
-    tweetElement.innerText = message;
+    tweetElement.innerText = text;
 
     return tweetElement;
   }
 
-  #createLikeButton() {
+  #createLikeButton(id) {
     const likeButton = document.createElement('div');
     likeButton.classList.add('like-button');
-    likeButton.onclick = this.#likeTweet;
+    likeButton.onclick = () => {
+      this.#likeTweet(id);
+    };
 
     return likeButton;
   }
 
-  #createTweetContainer(message) {
-    const tweetElement = this.#createTweetElement(message);
-    const likeButton = this.#createLikeButton();
+  #createTweetContainer(text, id) {
+    const tweetElement = this.#createTweetElement(text);
+    const likeButton = this.#createLikeButton(id);
     const tweetContainer = document.createElement('div');
     tweetContainer.classList.add('tweet');
     tweetContainer.appendChild(tweetElement);
@@ -38,8 +40,8 @@ class View {
     return tweetContainer;
   }
 
-  #renderTweet({ message }) {
-    const tweetElement = this.#createTweetContainer(message);
+  #renderTweet({ text, id }) {
+    const tweetElement = this.#createTweetContainer(text, id);
     this.#tweetsContainer.appendChild(tweetElement);
   }
 
@@ -52,11 +54,11 @@ class View {
 
   setupAddTweet(addTweet) {
     this.#tweetButton.onclick = () => {
-      const message = this.#tweetBox.value;
+      const text = this.#tweetBox.value;
 
-      if (message) {
+      if (text) {
         this.#tweetBox.value = '';
-        addTweet(message);
+        addTweet(text);
       }
     };
   }

@@ -20,8 +20,8 @@ describe('APP', () => {
 
     it('should give all the tweets data', (_, done) => {
       const tweets = new Tweets();
-      const message = 'hello world';
-      const tweet = new Tweet(message);
+      const text = 'hello world';
+      const tweet = new Tweet(text);
       tweets.addTweet(tweet);
       const app = createApp(tweets);
 
@@ -29,7 +29,7 @@ describe('APP', () => {
         .get('/tweets')
         .expect(200)
         .expect('content-type', /json/)
-        .expect([{ message }])
+        .expect([{ text }])
         .end(done);
     });
   });
@@ -38,13 +38,13 @@ describe('APP', () => {
     it('should create a new tweet', (_, done) => {
       const tweets = new Tweets();
       const app = createApp(tweets);
-      const message = 'hello, world';
+      const text = 'hello, world';
 
-      request(app).post('/tweets').send({ message }).expect(200).end(done);
+      request(app).post('/tweets').send({ text }).expect(201).end(done);
     });
   });
 
-  describe('POST /tweets/like', () => {
+  describe('POST /tweets/:id', () => {
     it('should increase the like count', (_, done) => {
       const tweets = new Tweets();
       const tweet = new Tweet('hello, world', 0, 0);
@@ -53,7 +53,7 @@ describe('APP', () => {
 
       request(app)
         .patch('/tweets/0')
-        .expect(200)
+        .expect(201)
         .expect('content-type', /json/)
         .expect({ likes: 1 })
         .end(done);
