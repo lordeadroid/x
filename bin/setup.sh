@@ -1,10 +1,9 @@
 #! /bin/bash
 
-cp bin/git-hooks/pre-commit .git/hooks/pre-commit
+cp ../git-hooks/pre-commit ../.git/hooks/pre-commit
 
 echo "Installing NPM packages"
 npm install
 
 echo "Running Tests"
-npm run test
 npm run coverage

@@ -13,7 +13,6 @@ const addTweet = (req, res) => {
   const id = tweets.getNoOfTweets();
   const tweet = new Tweet(text, id, username);
   tweets.addTweet(tweet);
-
   res.status(201).json({ id, username });
 };
 

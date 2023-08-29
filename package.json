@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "setup": "./bin/setup.sh",
     "start": "node server.js",
     "server": "node --watch server.js",
     "test": "node --test",

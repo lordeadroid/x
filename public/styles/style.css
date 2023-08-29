@@ -6,12 +6,12 @@
 
 body {
   color: white;
+  background-color: black;
   background-repeat: no-repeat;
   background-size: cover;
   width: 42%;
   margin: 0 auto;
   font-size: 25px;
-  background-color: black;
   overflow: scroll;
 }
 
@@ -21,15 +21,15 @@ body {
   width: 200px;
   background-repeat: no-repeat;
   background-size: cover;
-  margin-bottom: 50px;
+  margin-bottom: 25px;
 }
 
 #add-tweet-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px;
-  margin-bottom: 20px;
+  gap: 25px;
+  margin-bottom: 25px;
 }
 
 #tweet-box {
@@ -44,14 +44,14 @@ body {
   border: none;
   font-size: 1.2em;
   color: white;
-  background-color: rgb(38, 164, 217);
+  background-color: rgb(29, 155, 240);
   border-radius: 10px;
   height: 50px;
   width: 150px;
 }
 
 #tweet-button:hover {
-  box-shadow: 0px 0px 25px rgb(38, 164, 217);
+  box-shadow: 0px 0px 10px white;
 }
 
 .tweet {
@@ -62,7 +62,7 @@ body {
   display: flex;
   flex-direction: column;
   padding: 10px;
-  margin-bottom: 50px;
+  margin-bottom: 25px;
   justify-content: space-between;
 }
 
@@ -70,17 +70,19 @@ body {
   box-shadow: 0px 0px 20px white;
 }
 
-.like-button {
-  background-color: white;
-  background-size: 25px;
-  border-radius: 50%;
-  background-repeat: no-repeat;
-  height: 25px;
-  width: 25px;
-}
-
 .like-box {
   display: flex;
   align-items: center;
   gap: 15px;
+}
+
+.like-button {
+  /* background-color: white; */
+  background-image: url('../resources/like-logo.png');
+
+  /* border-radius: 50%; */
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 24px;
+  aspect-ratio: 1;
 }
