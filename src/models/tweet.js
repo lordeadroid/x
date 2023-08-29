@@ -4,10 +4,10 @@ class Tweet {
   #likes;
   #username;
 
-  constructor(text, id, username) {
+  constructor(text, id, username, likes = 0) {
     this.#text = text;
     this.#id = id;
-    this.#likes = 0;
+    this.#likes = likes;
     this.#username = username;
   }
 
@@ -28,8 +28,8 @@ class Tweet {
     return this.#likes;
   }
 
-  updateLikes(likes) {
-    this.#likes = likes;
+  updateLikes() {
+    this.#likes += 1;
   }
 }
 

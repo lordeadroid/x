@@ -1,15 +1,8 @@
 /* eslint-disable no-console */
 
-const createTweet = ({ text, id, likes, username }) => {
-  const tweet = new Tweet(text, id, username);
-  tweet.updateLikes(likes);
-
-  return tweet;
-};
-
 const createTweets = (tweetDetails, tweets) => {
-  tweetDetails.forEach((tweetDetail) => {
-    const tweet = createTweet(tweetDetail);
+  tweetDetails.forEach(({ text, id, likes, username }) => {
+    const tweet = new Tweet(text, id, username, likes);
     tweets.addTweet(tweet);
   });
 };
