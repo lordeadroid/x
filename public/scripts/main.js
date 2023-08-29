@@ -11,8 +11,9 @@ const main = () => {
   const tweetBox = document.querySelector('#tweet-box');
   const tweetButton = document.querySelector('#tweet-button');
   const tweetsContainer = document.querySelector('#tweets-container');
+  const logoutButton = document.querySelector('#logout-button');
 
-  const view = new View(tweetBox, tweetButton, tweetsContainer);
+  const view = new View(tweetBox, tweetButton, tweetsContainer, logoutButton);
   const tweets = new Tweets();
   const tweetDataHandler = new TweetDataHandler(tweets);
   const controller = new Controller(view, tweetDataHandler);

@@ -4,7 +4,6 @@ const parseCookie = (req, res, next) => {
   const rawCookies = req.headers.cookie || '';
   const cookiesPairs = rawCookies.split(';');
   const cookies = Object.fromEntries(cookiesPairs.map(splitByEqual));
-
   req.cookies = cookies;
   next();
 };
@@ -48,10 +47,16 @@ const authenticateUser = (req, res) => {
   res.redirect('/');
 };
 
+const logoutUser = (req, res) => {
+  res.clearCookie('username');
+  res.end();
+};
+
 module.exports = {
   parseCookie,
   loginUser,
   checkLoginStatus,
   serveHomePage,
   authenticateUser,
+  logoutUser,
 };

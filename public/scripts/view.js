@@ -5,11 +5,13 @@ class View {
   #tweetButton;
   #tweetsContainer;
   #likeTweet;
+  #logoutButton;
 
-  constructor(tweetBox, tweetButton, tweetsContainer) {
+  constructor(tweetBox, tweetButton, tweetsContainer, logoutButton) {
     this.#tweetBox = tweetBox;
     this.#tweetButton = tweetButton;
     this.#tweetsContainer = tweetsContainer;
+    this.#logoutButton = logoutButton;
   }
 
   #createLikeButton(id) {
@@ -75,5 +77,13 @@ class View {
 
   setupOnLike(likeTweet) {
     this.#likeTweet = likeTweet;
+  }
+
+  setupLogoutButton() {
+    this.#logoutButton.onclick = () => {
+      fetch('/logout', { method: 'POST' }).then(() => {
+        window.location.href = '/';
+      });
+    };
   }
 }

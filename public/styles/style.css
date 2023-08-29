@@ -15,6 +15,18 @@ body {
   overflow: scroll;
 }
 
+header {
+  display: flex;
+  justify-content: space-between;
+}
+
+#logout-button {
+  font-size: 1em;
+  color: white;
+  background-color: black;
+  border: none;
+}
+
 #logo {
   background-image: url('../resources/twitter-logo.png');
   height: 200px;

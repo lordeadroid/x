@@ -23,6 +23,8 @@ class Controller {
       this.#tweetDataHandler.likeTweet(id, () => this.#display());
     });
 
+    this.#view.setupLogoutButton();
+
     this.#display();
   }
 }

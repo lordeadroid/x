@@ -1,14 +1,12 @@
 class Tweet {
   #id;
   #text;
-  #time;
   #likes;
   #username;
 
-  constructor(text, id, username, likes = 0, time) {
+  constructor(text, id, username, likes = 0) {
     this.#id = id;
     this.#text = text;
-    this.#time = time;
     this.#likes = likes;
     this.#username = username;
   }
