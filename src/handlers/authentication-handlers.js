@@ -9,31 +9,33 @@ const parseCookie = (req, res, next) => {
   next();
 };
 
-const serveLoginPage = (req, res) => {
-  if (!req.cookies.username) {
-    const path = 'login.html';
-    const root = 'public/pages';
+const isValidCookie = (cookies) => cookies.username;
 
-    res.sendFile(path, { root });
-    return;
+const serveLoginPage = (req, res) => {
+  const path = 'login.html';
+  const root = 'public/pages';
+
+  res.sendFile(path, { root });
+  return;
+};
+
+const loginUser = (req, res) => {
+  if (!isValidCookie(req.cookies)) {
+    return serveLoginPage(req, res);
   }
 
   res.redirect('/');
 };
 
 const checkLoginStatus = (req, res) => {
-  if (!req.cookies.username) {
+  if (!isValidCookie(req.cookies)) {
     res.redirect('/login');
   }
 };
 
 const serveHomePage = (req, res, next) => {
-  if (!req.cookies.username) {
-    const path = 'login.html';
-    const root = 'public/pages';
-
-    res.sendFile(path, { root });
-    return;
+  if (!isValidCookie(req.cookies)) {
+    return serveLoginPage(req, res);
   }
 
   next();
@@ -48,7 +50,7 @@ const authenticateUser = (req, res) => {
 
 module.exports = {
   parseCookie,
-  serveLoginPage,
+  loginUser,
   checkLoginStatus,
   serveHomePage,
   authenticateUser,

@@ -8,7 +8,7 @@ const {
 } = require('./handlers/tweet-handlers');
 
 const {
-  serveLoginPage,
+  loginUser,
   checkLoginStatus,
   parseCookie,
   authenticateUser,
@@ -27,7 +27,7 @@ const createApp = (tweets) => {
 
   app.get('/', serveHomePage);
   app.get('/login-status', checkLoginStatus);
-  app.get('/login', serveLoginPage);
+  app.get('/login', loginUser);
   app.post('/login', authenticateUser);
 
   app.get('/tweets', sendTweets);
