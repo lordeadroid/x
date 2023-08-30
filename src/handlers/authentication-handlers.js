@@ -54,7 +54,6 @@ const authenticateUser = (req, res) => {
 
 const logoutUser = (req, res) => {
   res.clearCookie('username');
-  res.clearCookie('password');
   res.end();
 };
 

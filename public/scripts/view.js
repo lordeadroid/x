@@ -64,15 +64,17 @@ class View {
     });
   }
 
-  setupAddTweet(addTweet) {
-    this.#tweetButton.onclick = () => {
-      const text = this.#tweetBox.value;
+  setupAddTweet() {
+    return new Promise((res, rej) => {
+      this.#tweetButton.onclick = () => {
+        const text = this.#tweetBox.value;
 
-      if (text) {
-        this.#tweetBox.value = '';
-        addTweet(text);
-      }
-    };
+        if (text) {
+          this.#tweetBox.value = '';
+          res(text);
+        }
+      };
+    });
   }
 
   setupOnLike(likeTweet) {
@@ -82,7 +84,7 @@ class View {
   setupLogoutButton() {
     this.#logoutButton.onclick = () => {
       fetch('/logout', { method: 'POST' }).then(() => {
-        window.location.href = '/';
+        window.location.href = '/login';
       });
     };
   }

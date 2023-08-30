@@ -15,7 +15,7 @@ class Controller {
   }
 
   start() {
-    this.#view.setupAddTweet((text) => {
+    this.#view.setupAddTweet().then((text) => {
       this.#tweetDataHandler.addTweet(text, () => this.#display());
     });
 
