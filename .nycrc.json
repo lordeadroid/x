@@ -2,11 +2,5 @@
   "all": true,
   "coverage": true,
   "reporter": ["html", "text"],
-  "exclude": [
-    "test/",
-    "coverage/",
-    ".eslintrc.js",
-    "server.js",
-    "public/scripts/main.js"
-  ]
+  "include": ["src/"]
 }

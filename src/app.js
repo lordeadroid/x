@@ -30,9 +30,10 @@ const addAuthenticators = (app) => {
   app.post('/logout', logoutUser);
 };
 
-const createApp = (tweets) => {
+const createApp = (tweets, usersCredentials) => {
   const app = express();
   app.tweets = tweets;
+  app.usersCredentials = usersCredentials;
 
   addMiddleware(app);
   addAuthenticators(app);
