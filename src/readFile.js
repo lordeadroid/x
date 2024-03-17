@@ -4,9 +4,9 @@ const readFile = (path, encoding = "utf-8") => {
   return new Promise((res) => {
     fs.readFile(path, encoding, (error, content) => {
       if (error) {
-        const newFileContent = [];
-        fs.writeFile(path, JSON.stringify(newFileContent), () => {});
-        res(newFileContent);
+        const newFileContent = JSON.stringify([]);
+        fs.writeFileSync(path, newFileContent);
+        return res(newFileContent);
       }
       return res(content);
     });
