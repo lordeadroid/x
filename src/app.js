@@ -1,20 +1,19 @@
-const express = require('express');
-const { logRequest } = require('./middlewares/logger');
+const express = require("express");
+const { logRequest } = require("./middlewares/logger");
 
 const {
   sendTweets,
   addTweet,
   likeTweet,
-} = require('./handlers/tweet-handlers');
+} = require("./handlers/tweet-handlers");
 
 const {
-  loginUser,
-  checkLoginStatus,
+  serveLoginPage,
   parseCookie,
   authenticateUser,
   serveHomePage,
   logoutUser,
-} = require('./handlers/authentication-handlers');
+} = require("./handlers/authentication-handlers");
 
 const addMiddleware = (app) => {
   app.use(logRequest);
@@ -24,10 +23,9 @@ const addMiddleware = (app) => {
 };
 
 const addAuthenticators = (app) => {
-  app.get('/login-status', checkLoginStatus);
-  app.get('/login', loginUser);
-  app.post('/login', authenticateUser);
-  app.post('/logout', logoutUser);
+  app.get("/login", serveLoginPage);
+  app.post("/login", authenticateUser);
+  app.post("/logout", logoutUser);
 };
 
 const createApp = (tweets, usersCredentials) => {
@@ -38,12 +36,12 @@ const createApp = (tweets, usersCredentials) => {
   addMiddleware(app);
   addAuthenticators(app);
 
-  app.get('/', serveHomePage);
-  app.get('/tweets', sendTweets);
-  app.post('/tweets', addTweet);
-  app.patch('/tweets/:id', likeTweet);
+  app.get("/", serveHomePage);
+  app.get("/tweets", sendTweets);
+  app.post("/tweets", addTweet);
+  app.patch("/tweets/:id", likeTweet);
 
-  app.use(express.static('public'));
+  app.use(express.static("public"));
 
   return app;
 };
