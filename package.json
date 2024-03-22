@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "node --watch server.js",
     "setup": "./bin/setup.sh",
     "start": "node server.js",
     "server": "node --watch server.js",
